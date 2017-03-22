@@ -1,0 +1,30 @@
+.panel.panel-success(id="analog-output-group")
+   .panel-heading 
+      h4 Analog Input Group
+         a.fa.fa-close.pull-right(ng-click="data.show_panel.analog_input = !data.show_panel.analog_input")
+         a.fa.fa-cog.pull-right(ng-click="data.show_settings.analog_input = !data.show_settings.analog_input")
+   .analog-input(ng-show="data.show_panel.analog_input")
+      .panel-body(id="analog-input-body", ng-hide="data.show_settings.analog_input")
+         h4 AIN1
+         .slider.slider-default
+            // Two way binding
+            input(type="text",
+                  data-slider-bind="data.analog_input.IN1",
+                  class="slider-span",
+                  value="45",
+                  data-slider-min="0",
+                  data-slider-max="100",
+                  data-slider-selection="after",
+                  data-slider-tooltip="hide")
+
+         h4 AIN2
+         .slider.slider-default
+            // Two way binding
+            input(type="text",
+                  data-slider-bind="data.analog_input.IN2",
+                  class="slider-span",
+                  value="10",
+                  data-slider-min="0",
+                  data-slider-max="100",
+                  data-slider-selection="after",
+                  data-slider-tooltip="hide")

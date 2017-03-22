@@ -1,0 +1,28 @@
+{
+  "name": "rpi_controller",
+  "authors": [
+    "Yusuf Can Bayrak <yusufcanbayrak@gmail.com>"
+  ],
+  "description": "Raspberry Pi Remote Controller",
+  "main": "manage.py",
+  "license": "MIT",
+  "homepage": "twitter.com/ycbayrak",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "static/lib"
+  ],
+  "dependencies": {
+    "angular-animate": "^1.6.1",
+    "angular": "^1.6.3",
+    "angular-route": "^1.6.1",
+    "animate.css": "^3.5.2",
+    "bootstrap-slider": "seiyria-bootstrap-slider#^9.5.4",
+    "bootstrap-toggle": "^2.2.2",
+    "bootstrap": "^3.3.7",
+    "font-awesome": "fontawesome#^4.7.0"
+  }
+}

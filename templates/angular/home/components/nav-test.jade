@@ -1,0 +1,43 @@
+.sidebar-nav
+   .navbar.navbar-default(role='navigation')
+      .navbar-header
+         button.navbar-toggle(type='button', data-toggle='collapse', data-target='.sidebar-navbar-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+         span.visible-xs.navbar-brand Sidebar menu
+      .navbar-collapse.collapse.sidebar-navbar-collapse
+         ul.nav.navbar-nav(id="hello")
+            li
+               a(href="#!/") Dashboard
+                  i.fa.fa-home.pull-right
+            li
+               a(href='#!/') Device List
+                  i.fa.fa-list.pull-right
+            li
+               a(href='#!/') Device Registration
+                  i.fa.fa-plus.pull-right
+            li
+               a(href='/#!/auth/') Logout
+                  i.fa.fa-shield.pull-right
+         ul.nav.navbar-nav(style="margin-top:50px;")
+            li
+               .row
+                  .col-md-4.col-lg-4
+                     img.img.img-responsive(src="images/django.svg", width=50, height=50, style="margin-left:8px;")
+                  .col-md-4.col-lg-4
+                     img.img.img-responsive(src="images/raspberry.png", width=50, height=50, style="margin-left:4px;")
+                  .col-md-4.col-lg-4
+                     img.img.img-responsive(src="images/angular.svg", width=50, height=50)
+
+
+               .row(style="margin:8px;")
+                  .col-md-12.col-lg-12(id="copyright")
+                     small Made with technologies; AngularJS, Django and Raspberry Pi
+                     br
+                     br
+                     .fa.fa-copyright(style="color:white;")
+                     small   Copyright 2017
+                        span
+                           a(href="http://twitter.com/ycbayrak")   ycbayrak

@@ -1,0 +1,19 @@
+.row
+   .panel.panel-primary.align-center
+      .panel-heading(ng-hide="auth.isAuthed()")
+         h1 Welcome
+         hr
+         h5 Please authenticate your account to access your control panel
+      .panel-body
+         .row
+            .col-md-12.col-xs-12
+               .well.well-lg(ng-show="auth.isAuthed()")
+                  h1 Authentication
+                  h3 You already signed in.
+                  span.text-center
+                     button.btn.btn.btn-large.btn-danger(ng-click="auth.logout()") Logout
+               .form.form-group.input-group(ng-hide="auth.isAuthed()")
+                  input.form-control(name="user", type='text', ng-model='auth.username', placeholder='username', style="margin-top:10px;")
+                  input.form-control(name="password",type='password', ng-model='auth.password', placeholder='password', style="margin-top:10px;")
+                  button.form-control.btn.btn-success(ng-click='auth.login()', style="margin-top:10px; border-radius:35px;") Login
+                  h3 {{auth.message}}

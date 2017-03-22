@@ -1,0 +1,136 @@
+// out: ../home.css
+
+@import "components/slider";
+@import "components/panel-animations";
+@import "components/vertical-navbar";
+@import "components/navbar-large";
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
+
+@prim: #53e3a6;
+
+body {
+	height: 100%;
+	font-family: 'Source Sans Pro', sans-serif;
+	//color: white;
+	font-weight: 300;
+	a.fa {
+		color: white;
+	}
+
+	a.fa:hover {
+		color: white;
+	}
+
+	pre {
+		background-color: inherit !important;
+		border: none;
+		font-size: 9px;
+		color: black;
+	}
+
+	::-webkit-input-placeholder { /* WebKit browsers */
+		font-family: 'Source Sans Pro', sans-serif;
+		//color: white;
+		font-weight: 300;
+	}
+	::-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+		font-family: 'Source Sans Pro', sans-serif;
+		color: white;
+		opacity: 1;
+		font-weight: 300;
+	}
+	::-moz-placeholder { /* Mozilla Firefox 19+ */
+		font-family: 'Source Sans Pro', sans-serif;
+		color: white;
+		opacity: 1;
+		font-weight: 300;
+	}
+	:-ms-input-placeholder { /* Internet Explorer 10+ */
+		font-family: 'Source Sans Pro', sans-serif;
+		color: white;
+		font-weight: 300;
+	}
+}
+
+.container {
+	height: auto !important;
+	margin: 0 auto -4em;
+}
+
+@-webkit-keyframes square {
+	0% {
+		transform: translateY(0);
+	}
+	100% {
+		transform: translateY(-700px) rotate(600deg);
+	}
+}
+
+@keyframes square {
+	0% {
+		transform: translateY(0);
+	}
+	100% {
+		transform: translateY(-700px) rotate(600deg);
+	}
+}
+
+.panel-danger .panel-heading:hover {
+	border-color: darken(#C41B38, 10%) !important;
+	background-color: darken(#C41B38, 10%) !important;
+	-webkit-transition: all 0.5s ease;
+}
+
+
+.panel-warning .panel-heading:hover {
+	border-color: darken(#44B7AC, 10%) !important;
+	background-color: darken(#44B7AC, 10%) !important;
+	-webkit-transition: all 0.4s ease;
+}
+
+input[type=text] {
+	border-radius: 15px !important;
+	//color: white !important;
+	background-color: transparent;
+}
+
+input[type=text]::-moz-placeholder  {
+	color: white !important;
+}
+
+input[type=password] {
+	border-radius: 15px !important;
+	color: white !important;
+	background-color: transparent;
+}
+
+input[type=password]::-moz-placeholder  {
+	color: white !important;
+}
+
+
+.app-info{
+	margin-top: 50px;
+}
+
+
+.relay-control .slideThree label {
+	background-color: #337AB6 !important;
+}
+
+#digital-output-group .slideThree label {
+	background-color: #44B7AC !important;
+}
+
+#digital-input-group .slideThree label {
+	background-color: #44B7AC !important;
+}
+
+#analog-output-group .slideThree label {
+	background-color: #00D291 !important;
+}
+
+#copyright small {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-style: normal !important;
+}

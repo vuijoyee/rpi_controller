@@ -1,0 +1,13 @@
+@default-animation-in: fadeOut;
+@default-animation-out: fadeIn;
+@default-animation-duration: 0.1s;
+
+.panel-body.ng-hide-remove {
+	-webkit-animation: @default-animation-duration @default-animation-out;
+	animation: 0.1s @default-animation-out;
+}
+
+.panel-body.ng-hide-add {
+	-webkit-animation: @default-animation-duration @default-animation-duration @default-animation-in;
+	animation: 0.1s @default-animation-in;
+}

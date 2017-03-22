@@ -1,0 +1,14 @@
+
+// Button trigger modal
+button.btn.btn-primary.btn-lg(type='button') Launch demo modal
+#myModal.modal.modal-sm.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+   .modal-dialog
+     .modal-content
+       .modal-header
+         button.close(type='button', data-dismiss='modal', aria-label='Close')
+           a.fa.fa-cog.text-default(aria-hidden='true')
+         h4#myModalLabel.modal-title Modal title
+       .modal-body ...
+       .modal-footer
+         button.btn.btn-default(type='button', data-dismiss='modal') Close
+         button.btn.btn-primary(type='button') Save changes
