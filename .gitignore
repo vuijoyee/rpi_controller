@@ -153,6 +153,7 @@ typings/
 
 # Yarn Integrity file
 .yarn-integrity
+.idea/*
 
 ### PyCharm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
@@ -212,3 +213,5 @@ wheels/
 
 *.sage.py
 .venv
+.idea/vcs.xml
+static/css/auth/
