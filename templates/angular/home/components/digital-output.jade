@@ -1,25 +1,25 @@
 .panel.panel-warning
-   .panel-heading
-      h4 Digital Output Group
-         a.fa.fa-close.pull-right(ng-click="data.show_panel.digital_output = !data.show_panel.digital_output;")
-         a.fa.fa-cog.pull-right(ng-click="data.show_settings.digital_output = !data.show_settings.digital_output;")
-         a.fa.fa-info.pull-right
+  .panel-heading
+    h4 Digital Output Group
+      a.fa.fa-close.pull-right(ng-click="data.show_panel.digital_output = !data.show_panel.digital_output;")
+      a.fa.fa-cog.pull-right(ng-click="data.show_settings.digital_output = !data.show_settings.digital_output;")
+      a.fa.fa-info.pull-right
 
-   .panel-body(id="digital-output-group" ng-show="data.show_panel.digital_output")
-      h4 OUT1
-      .slideThree(ng-click="data.digital_output.DOUT1 = !data.digital_output.DOUT1")
-         input(type="checkbox",
-               id="randomInputs",
-               ng-checked="data.digital_output.DOUT1",
-               value="None"
-               name="check")
-         label(for="slideThree")
-      h4 OUT2
-      .slideThree(ng-click="data.digital_output.DOUT2 = !data.digital_output.DOUT2")
-         input(type="checkbox",
-         id="randomInputs",
-         ng-checked="data.digital_output.DOUT2",
-         value="None"
-         name="check")
-         label(for="slideThree")
+  .panel-body(id="digital-output-group" ng-show="data.show_panel.digital_output")
+    h4 OUT1
+    .slideThree(ng-click="data.digital_output.DOUT1 = !data.digital_output.DOUT1")
+      input(type="checkbox",
+      id="randomInputs",
+      ng-checked="data.digital_output.DOUT1",
+      value="None"
+      name="check")
+      label(for="slideThree")
+    h4 OUT2
+    .slideThree(ng-click="data.digital_output.DOUT2 = !data.digital_output.DOUT2")
+      input(type="checkbox",
+      id="randomInputs",
+      ng-checked="data.digital_output.DOUT2",
+      value="None"
+      name="check")
+      label(for="slideThree")
 

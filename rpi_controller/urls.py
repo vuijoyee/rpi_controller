@@ -6,7 +6,8 @@ from rest_framework_jwt.views import obtain_jwt_token
 
 urlpatterns = [
     url(r'^auth/token/', obtain_jwt_token),
-    url(r'^api/', include('angular.urls')),
+    url(r'^ng/', include('angular.urls')),
+    url(r'^api/', include('api.urls')),
 ]
 
 urlpatterns += [

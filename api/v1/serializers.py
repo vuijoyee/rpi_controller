@@ -14,6 +14,7 @@ from api.v1.models import (
     DigitalOutput)
 
 import logging
+
 logger = logging.getLogger('api.v1.serializer')
 
 
@@ -104,27 +105,22 @@ class StatusSerializer(serializers.ModelSerializer):
 
 class DeviceSerializer(serializers.HyperlinkedModelSerializer):
     url = serializers.HyperlinkedIdentityField(
-        view_name='api.lift_detail',
+        view_name='api.device.detail',
         lookup_field='pk'
     )
-    user = serializers.HyperlinkedRelatedField(view_name="user_detail",
-                                               lookup_field="pk",
-                                               many=False,
-                                               read_only=True)
     id = serializers.ReadOnlyField()
-    status = StatusSerializer(read_only=True)
 
     class Meta:
         model = Device
-        fields = ('url', 'id', 'status', 'company', 'name', 'location', 'address', 'created_at', 'slug')
+        fields = ('url', 'id', 'name', 'location', 'address', 'created_at', 'slug')
 
 
 class ErrorSerializer(serializers.ModelSerializer):
-    lift = serializers.HyperlinkedRelatedField(view_name="api.lift_detail",
-                                               lookup_field="pk",
-                                               many=False,
-                                               read_only=True)
+    device = serializers.HyperlinkedRelatedField(view_name="api.device.detail",
+                                                 lookup_field="pk",
+                                                 many=False,
+                                                 read_only=True)
 
     class Meta:
         model = Error
-        fields = ('lift', 'title', 'content', 'created_at', 'is_solved', 'slug')
+        fields = ('device', 'title', 'content', 'created_at', 'is_solved', 'slug')

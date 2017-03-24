@@ -1,0 +1,32 @@
+.row.animated.fadeInLeft(style="margin-top:100px;")
+  .col-md-12.col-lg-12
+    .panel.panel-primary.panel-table
+      .panel-heading
+        .row
+          .col.col-xs-6
+            h1 Device List
+          .col.col-xs-6.text-right
+            button.btn.btn-sm.btn-primary.btn-create(type='button', ng-click="manager.createDeviceRoute()") Create New Device
+      .panel-body
+        table.table.table-striped.table-bordered.table-list
+          thead
+            tr
+
+              th.device-list-id.hidden-xs ID
+              th.device-list-name Name
+              th.device-list-location Location
+              th.device-list-description Description
+              th.device-list-actions Actions
+          tbody
+            tr(ng-repeat="device in manager.devices")
+              td.device-list-id.hidden-xs {{ device.id }}
+              td.device-list-name {{ device.name }}
+              td.device-list-location {{ device.location }}
+              td.device-list-description {{ device.description }}
+              td.device-list-actions(align='center')
+                button.btn.btn-primary(ng-click="manager.dashboardRoute(device.id)") Dashboard
+                  i.fa.fa-cogs.pull-left
+                button.btn.btn-warning Edit
+                  i.fa.fa-pencil.pull-left
+                button.btn.btn-danger Delete
+                  i.fa.fa-trash.pull-left

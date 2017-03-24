@@ -1,9 +1,10 @@
 .panel.panel-danger
-    .panel-heading
-        h4 Debug Panel
-            a.text-danger.fa.fa-close.pull-right(ng-click="data.show_panel.debug = !data.show_panel.debug")
-            a.text-danger.fa.fa-cog.pull-right
-    .debug-panel
-        .panel-body(ng-show="data.show_panel.debug")
-            .row
-                h1.text-center Select Your Device
+  .panel-heading
+    h4 Debug Panel
+      a.text-danger.fa.fa-close.pull-right(ng-click="data.show_panel.debug = !data.show_panel.debug")
+      a.text-danger.fa.fa-cog.pull-right(ng-href="#!/device-manager")
+  .debug-panel
+    .panel-body(ng-show="data.show_panel.debug")
+      .row
+        .carousel-frame(style="width:800px; height: 400px")
+          //carousel(links="data.links")

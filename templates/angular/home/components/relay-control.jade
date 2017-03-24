@@ -1,75 +1,76 @@
 .panel.panel-primary
-   .panel-heading
-      h4 Relay Control Group
+  .panel-heading
+    h4 Relay Control Group
 
-         a.text-danger.fa.fa-close.pull-right(ng-click="data.show_panel.relay_control = !data.show_panel.relay_control")
-         a.text-danger.fa.fa-cog.pull-right(style="color:white !important;")
-         a.fa.fa-info.pull-right
-   .panel-body(ng-show="data.show_panel.relay_control")
-      .row.relay-control
-         .col-xs-6.col-md-6.col-lg-6
-            h1 Relay 1
-            .slideThree(ng-click="data.relays.A0 = !data.relays.A0; writePins(4)")
-               input(type="checkbox",
-               ng-checked="data.relays.A0",
-               value="None"
-               name="check")
-               label(for="slideThree")
-            h1 Relay 2
-            .slideThree(ng-click="data.relays.A1 = !data.relays.A1; writePins(4)")
-               input(type="checkbox",
-               ng-checked="data.relays.A1",
-               value="None"
-               name="check")
-               label(for="slideThree")
-
-
-            h1 Relay 3
-            .slideThree(ng-click="data.relays.A2 = !data.relays.A2; writePins(4)")
-               input(type="checkbox",
-               ng-checked="data.relays.A2",
-               value="None"
-               name="check")
-               label(for="slideThree")
-
-            h1 Relay 4
-            .slideThree(ng-click="data.relays.A3 = !data.relays.A3; writePins(4)" )
-               input(type="checkbox",
-               ng-checked="data.relays.A3",
-               value="None"
-               name="check")
-               label(for="slideThree")
-
-         .col-xs-6.col-md-6.col-lg-6
-            h1 Relay 5
-            .slideThree(ng-click="data.relays.A4 = !data.relays.A4; writePins(4)")
-               input(type="checkbox",
-               ng-checked="data.relays.A4",
-               value="None"
-               name="check")
-               label(for="slideThree")
-            h1 Relay 6
-            .slideThree(ng-click="data.relays.A5 = !data.relays.A5; writePins(4)")
-               input(type="checkbox",
-               ng-checked="data.relays.A5",
-               value="None"
-               name="check")
-               label(for="slideThree")
+      a.text-danger.fa.fa-close.pull-right(ng-click="data.show_panel.relay_control = !data.show_panel.relay_control")
+      a.text-danger.fa.fa-cog.pull-right(style="color:white !important;")
+      a.fa.fa-info.pull-right
+  .panel-body(ng-show="data.show_panel.relay_control")
+    .row.relay-control
+      .col-xs-6.col-md-6.col-lg-6
+        h1 Relay 1
+        .slideThree(ng-click="data.relays.A0 = !data.relays.A0; writePins()")
+          input(type="checkbox",
+          ng-checked="data.relays.A0",
+          value="None"
+          name="check")
+          label(for="slideThree")
+        h1 Relay 2
+        .slideThree(ng-click="data.relays.A1 = !data.relays.A1; writePins()")
+          input(type="checkbox",
+          ng-checked="data.relays.A1",
+          value="None"
+          name="check")
+          label(for="slideThree")
 
 
-            h1 Relay 7
-            .slideThree(ng-click="data.relays.A6 = !data.relays.A6; writePins(4)")
-               input(type="checkbox",
-               ng-checked="data.relays.A6",
-               value="None"
-               name="check")
-               label(for="slideThree")
+        h1 Relay 3
+        .slideThree(ng-click="data.relays.A2 = !data.relays.A2; writePins()")
+          input(type="checkbox",
+          ng-checked="data.relays.A2",
+          value="None"
+          name="check")
+          label(for="slideThree")
 
-            h1 Relay 8
-            .slideThree(ng-click="data.relays.A7 = !data.relays.A7; writePins(4)")
-               input(type="checkbox",
-               ng-checked="data.relays.A7",
-               value="None"
-               name="check")
-               label(for="slideThree")
+        h1 Relay 4
+        .slideThree(ng-click="data.relays.A3 = !data.relays.A3; writePins()" )
+          input(type="checkbox",
+          ng-checked="data.relays.A3",
+          value="None"
+          name="check")
+          label(for="slideThree")
+
+
+      .col-xs-6.col-md-6.col-lg-6
+        h1 Relay 5
+        .slideThree(ng-click="data.relays.A4 = !data.relays.A4; writePins()")
+          input(type="checkbox",
+          ng-checked="data.relays.A4",
+          value="None"
+          name="check")
+          label(for="slideThree")
+        h1 Relay 6
+        .slideThree(ng-click="data.relays.A5 = !data.relays.A5; writePins()")
+          input(type="checkbox",
+          ng-checked="data.relays.A5",
+          value="None"
+          name="check")
+          label(for="slideThree")
+
+
+        h1 Relay 7
+        .slideThree(ng-click="data.relays.A6 = !data.relays.A6; writePins()")
+          input(type="checkbox",
+          ng-checked="data.relays.A6",
+          value="None"
+          name="check")
+          label(for="slideThree")
+
+        h1 Relay 8
+        .slideThree(ng-click="data.relays.A7 = !data.relays.A7; writePins()")
+          input(type="checkbox",
+          ng-checked="data.relays.A7",
+          value="None"
+          name="check")
+          label(for="slideThree")
 

@@ -17,7 +17,7 @@
       <option name="program" value="/usr/local/bin/jade" />
       <option name="scopeName" value="Project Files" />
       <option name="trackOnlyRoot" value="true" />
-      <option name="workingDir" value="$PROJECT_DIR$/templates/angular" />
+      <option name="workingDir" value="$FileDir$" />
       <envs />
     </TaskOptions>
   </component>

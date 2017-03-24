@@ -1,25 +1,25 @@
 .panel.panel-warning(id="digital-input-group")
-   .panel-heading
-      h4 Digital Input Group
-         a.fa.fa-close.pull-right(ng-click="data.show_panel.digital_input = !data.show_panel.digital_input;")
-         a.fa.fa-cog.pull-right(ng-click="data.show_settings.digital_input = !data.show_settings.digital_input;")
-         a.fa.fa-info.pull-right
+  .panel-heading
+    h4 Digital Input Group
+      a.fa.fa-close.pull-right(ng-click="data.show_panel.digital_input = !data.show_panel.digital_input;")
+      a.fa.fa-cog.pull-right(ng-click="data.show_settings.digital_input = !data.show_settings.digital_input;")
+      a.fa.fa-info.pull-right
 
-   .panel-body(ng-show="data.show_panel.digital_input")
-      h4 IN1
-      .slideThree(ng-click="data.digital_input.DIN1 = !data.digital_input.DIN1")
-         input(type="checkbox",
-               id="randomInputs",
-               ng-checked="data.digital_input.DIN1",
-               value="None"
-               name="check")
-         label(for="slideThree")
-      h4 IN2
-      .slideThree(ng-click="data.digital_input.DIN2 = !data.digital_input.DIN2")
-         input(type="checkbox",
-         id="randomInputs",
-         ng-checked="data.digital_input.DIN2",
-         value="None"
-         name="check")
-         label(for="slideThree")
+  .panel-body(ng-show="data.show_panel.digital_input")
+    h4 IN1
+    .slideThree(ng-click="data.digital_input.DIN1 = !data.digital_input.DIN1")
+      input(type="checkbox",
+      id="randomInputs",
+      ng-checked="data.digital_input.DIN1",
+      value="None"
+      name="check")
+      label(for="slideThree")
+    h4 IN2
+    .slideThree(ng-click="data.digital_input.DIN2 = !data.digital_input.DIN2")
+      input(type="checkbox",
+      id="randomInputs",
+      ng-checked="data.digital_input.DIN2",
+      value="None"
+      name="check")
+      label(for="slideThree")
 

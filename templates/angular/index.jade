@@ -8,28 +8,55 @@ html(lang='en')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     title RPi Controller v0.1
+    // Library
     link(rel='stylesheet', href!='{% static "lib/bootstrap/dist/css/bootstrap.min.css" %}')
     link(rel='stylesheet', href!='{% static "lib/bootstrap-slider/dist/css/bootstrap-slider.min.css" %}')
     link(rel='stylesheet', href!='{% static "lib/bootstrap-toggle/css/bootstrap-toggle.min.css" %}')
     link(rel='stylesheet', href!='{% static "lib/font-awesome/css/font-awesome.min.css" %}')
+    link(rel='stylesheet', href!='{% static "lib/animate.css/animate.css" %}')
+    link(rel="stylesheet", href!='{% static "lib/please-wait/build/please-wait.css" %}')
+
+    // User Defined
+    link(rel='stylesheet', href!='{% static "css/bootstrap-theme.css" %}')
     link(rel='stylesheet', href!='{% static "css/home/home.css" %}')
+
   body
     .container(ng-app='RPi')
-      .xx-navbar(ng-controller='NavbarCtrl')
+      .xx-navbar(ng-controller='NavbarCtrl' style="margin-bottom:100px;")
         navigation(affixed='affixed', menus='menus')
       .xx-route
-        ng-view
+        .inner.ng-view
+
+  script(src!='{% static "lib/please-wait/build/please-wait.js" %}')
+  script(type='text/javascript')
+    | window.loading_screen = window.pleaseWait({logo: "static/img/bor copy.png",
+    | backgroundColor: '#FFF',
+    | loadingHtml: '<div class="sk-circle"> <div class="sk-circle1 sk-child"></div> <div class="sk-circle2 sk-child"></div> <div class="sk-circle3 sk-child"></div> <div class="sk-circle4 sk-child"></div> <div class="sk-circle5 sk-child"></div> <div class="sk-circle6 sk-child"></div> <div class="sk-circle7 sk-child"></div> <div class="sk-circle8 sk-child"></div> <div class="sk-circle9 sk-child"></div> <div class="sk-circle10 sk-child"></div> <div class="sk-circle11 sk-child"></div> <div class="sk-circle12 sk-child"></div></div>'})
+  // Bootstrap
   script(src!='{% static "lib/jquery/dist/jquery.min.js" %}')
   script(src!='{% static "lib/bootstrap/dist/js/bootstrap.min.js" %}')
   script(src!='{% static "lib/bootstrap-slider/dist/bootstrap-slider.js" %}')
+
+  // Angular Source
   script(src!='{% static "lib/angular/angular.js" %}')
   script(src!='{% static "lib/angular-route/angular-route.js" %}')
+
+  // Authentication
   script(src!='{% static "js/app/auth/auth.js" %}')
   script(src!='{% static "js/app/auth/auth.controller.js" %}')
   script(src!='{% static "js/app/auth/auth.service.js" %}')
+
+  // Home
   script(src!='{% static "js/app/home/home.js" %}')
   script(src!='{% static "js/app/home/home.controller.js" %}')
   script(src!='{% static "js/app/home/home.directive.js" %}')
   script(src!='{% static "js/app/home/home.service.js" %}')
+
+  // Manager
+  script(src!='{% static "js/app/manager/manager.js" %}')
+  script(src!='{% static "js/app/manager/manager.service.js" %}')
+  script(src!='{% static "js/app/manager/manager.controller.js" %}')
+
+  // Application & Navigation
   script(src!='{% static "js/app/home/navbar.directive.js" %}')
   script(src!='{% static "js/app/app.js" %}')

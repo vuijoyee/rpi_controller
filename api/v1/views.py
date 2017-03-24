@@ -1,9 +1,9 @@
-
 import json
 import logging
 
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.models import AnonymousUser
 
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -81,7 +81,7 @@ def device_hub(request):
     print(request.META['CONTENT_TYPE'])
     print(request.POST)
     if request.method == "POST" and \
-            "mac-address" and "lift-token" in request.POST:
+        "mac-address" and "lift-token" in request.POST:
         try:
             device = Device.objects.get(mac_address=request.POST['mac-address'])
             device_test = DeviceToken.objects.get(token=request.POST['lift-token'])
@@ -136,6 +136,9 @@ class DeviceList(APIView):
     """
 
     def get(self, request, format=None):
+        print(request.user)
+        if request.user.is_anonymous:
+            return Response({}, status=status.HTTP_401_UNAUTHORIZED)
         devices = Device.objects.filter(user_profile=request.user)
         serializer = DeviceSerializer(devices, many=True, context={'request': request})
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -188,33 +191,36 @@ class RelayDetail(APIView):
     # TODO Only Return the Pin Status that belongs to Lift
 
     def get(self, request, pk, format=None):
-        lift = get_object_or_404(Device, pk=pk)
-        device = lift.status.pin_schema
-        serializer = DeviceSerializer(device, context={'request': request})
+        print(request.user)
+        device = get_object_or_404(Device, pk=pk)
+        relays = device.relay
+        serializer = DeviceSerializer(relays, context={'request': request})
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def put(self, request, pk, format=None):
+        print(request.user)
         device = get_object_or_404(Device, pk=pk)
         relay = device.relay
         serializer = RelaySerializer(relay, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
+        print(serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class AnalogInputDetail(APIView):
     def get(self, request, pk, format=None):
-        lift = get_object_or_404(Lift, pk=pk)
-        analog_input = lift.analoginput
+        device = get_object_or_404(Device, pk=pk)
+        analog_input = device.analoginput
         serializer = AnalogInputSerializer(analog_input, context={'request': request})
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def put(self, request, pk, format=None):
         # TODO: Ensure the route only accessable from raspberry pi
         print(request.data)
-        lift = get_object_or_404(Lift, pk=pk)
-        analog_input = lift.analoginput
+        device = get_object_or_404(Device, pk=pk)
+        analog_input = device.analoginput
         serializer = AnalogInputSerializer(analog_input, data=request.data)
         if request.data:
             if not "lift" in request.data:
@@ -227,18 +233,18 @@ class AnalogInputDetail(APIView):
 
 class AnalogOutputDetail(APIView):
     def get(self, request, pk, format=None):
-        lift = get_object_or_404(Lift, pk=pk)
-        analog_output = lift.analogoutput
+        device = get_object_or_404(Device, pk=pk)
+        analog_output = device.analogoutput
         serializer = AnalogOutputSerializer(analog_output, context={'request': request})
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def put(self, request, pk, format=None):
-        lift = get_object_or_404(Lift, pk=pk)
-        analog_output = lift.analogoutput
+        device = get_object_or_404(Device, pk=pk)
+        analog_output = device.analogoutput
         serializer = AnalogOutputSerializer(analog_output, data=request.data)
         if request.data:
-            if not "lift" in request.data:
-                request.data["lift"] = lift.pk
+            if not "device" in request.data:
+                request.data["device"] = device.pk
         if serializer.is_valid():
             serializer.save()
             print(serializer.data)
@@ -249,8 +255,8 @@ class AnalogOutputDetail(APIView):
 class DigitalInputDetail(APIView):
     def get(self, request, pk, format=None):
         print(request.user)
-        lift = get_object_or_404(Device, pk=pk)
-        digital_input = lift.digitalinput
+        device = get_object_or_404(Device, pk=pk)
+        digital_input = device.digitalinput
         serializer = DigitalInputSerializer(digital_input, context={'request': request})
         return Response(serializer.data, status=status.HTTP_200_OK)
 

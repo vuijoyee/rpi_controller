@@ -3,24 +3,24 @@
     function AnalogInputService($http, API) {
         srvc = this;
         srvc.get = function (id) {
-            return $http.get(API + 'lift/' + id + '/analog-input/')
+            return $http.get(API + 'device/' + id + '/analog-input/')
         };
     }
 
     function AnalogOutputService($http, API) {
         srvc = this;
         srvc.get = function (id) {
-            return $http.get(API + 'lift/' + id + '/analog-output/')
+            return $http.get(API + 'device/' + id + '/analog-output/')
         };
         srvc.put= function (id, data) {
-            return $http.put(API + 'lift/' + id + '/analog-output/', data)
+            return $http.put(API + 'device/' + id + '/analog-output/', data)
         }
     }
 
     function DigitalInputService($http, API) {
         srvc = this;
         srvc.get = function (id) {
-            return $http.get(API + 'lift/' + id + '/digital-input/')
+            return $http.get(API + 'device/' + id + '/digital-input/')
         }
     }
 
@@ -28,18 +28,18 @@
     function DigitalOutputService($http, API) {
         srvc = this;
         srvc.get = function (id) {
-            return $http.get(API + 'lift/' + id + '/digital-output/')
+            return $http.get(API + 'device/' + id + '/digital-output/')
         }
     }
 
     function PinService($http, API) {
         srvc = this;
         srvc.get = function (id) {
-            return $http.get(API + 'lift/' + id + '/pin/')
+            return $http.get(API + 'device/' + id + '/relay/')
         };
 
         srvc.put = function (id, data) {
-            return $http.put(API + 'lift/' + id + '/pin/', data)
+            return $http.put(API + 'device/' + id + '/relay/', data)
         }
     }
 

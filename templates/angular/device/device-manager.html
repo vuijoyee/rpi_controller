@@ -1,0 +1,43 @@
+<div style="margin-top:100px;" class="row animated fadeInLeft">
+	<div class="col-md-12 col-lg-12">
+		<div class="panel panel-primary panel-table">
+			<div class="panel-heading">
+				<div class="row">
+					<div class="col col-xs-6"><h1>Device List</h1></div>
+					<div class="col col-xs-6 text-right">
+						<button type="button" ng-click="manager.createDeviceRoute()" class="btn btn-sm btn-primary btn-create">
+							Create New Device
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="panel-body">
+				<table class="table table-striped table-bordered table-list">
+					<thead>
+					<tr>
+						<th class="device-list-id hidden-xs">ID</th>
+						<th class="device-list-name">Name</th>
+						<th class="device-list-location">Location</th>
+						<th class="device-list-description">Description</th>
+						<th class="device-list-actions">Actions</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr ng-repeat="device in manager.devices">
+						<td class="device-list-id hidden-xs">{{ device.id }}</td>
+						<td class="device-list-name">{{ device.name }}</td>
+						<td class="device-list-location">{{ device.location }}</td>
+						<td class="device-list-description">{{ device.description }}</td>
+						<td align="center" class="device-list-actions">
+							<button ng-click="manager.dashboardRoute(device.id)" class="btn btn-primary">Dashboard<i
+								class="fa fa-cogs pull-left"></i></button>
+							<button class="btn btn-warning">Edit<i class="fa fa-pencil pull-left"></i></button>
+							<button class="btn btn-danger">Delete<i class="fa fa-trash pull-left"></i></button>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

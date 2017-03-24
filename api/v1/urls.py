@@ -12,13 +12,8 @@ urlpatterns = [
     url(r'^user/(?P<username>[\w-]+)/$', UserDetail.as_view(), name='api.user.detail'),
 
     # Device URLs
-    url(r'^devices/$', DeviceList.as_view(), name='api.lift_list'),
+    url(r'^devices/$', DeviceList.as_view(), name='api.devices'),
     url(r'^device/(?P<pk>[0-9]+)/$', DeviceDetail.as_view(), name='api.device.detail'),
-
-    # Device Controlling URLs
-    url(r'^device/(?P<pk>[0-9]+)/controller/$', lift_controller, name='api.lift.controller'),
-    url(r'^device/(?P<pk>[0-9]+)/controller/enable/$', lift_controller_enable, name='api.device.control_enable'),
-    url(r'^device/(?P<pk>[0-9]+)/controller/disable/$', lift_controller_disable, name='api.device.control_disable'),
 
     # Device Status URLs
     url(r'^device/(?P<pk>[0-9]+)/status/$', StatusDetail.as_view(), name='api.device.status'),
