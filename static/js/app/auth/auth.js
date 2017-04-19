@@ -14,12 +14,7 @@
             if (res.config.url.indexOf(API) === 0 && res.data.token) {
                auth.saveToken(res.data.token);
             }
-            else {
-               $location.path("/login");
-               return res;
-            }
-
-
+            return res;
          }
       }
    }

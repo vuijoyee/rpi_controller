@@ -13,8 +13,8 @@
                controllerAs: "auth"
             })
 
-            .when("/device/create", {
-               templateUrl: "ng/templates/tutorial/tutorial.html"
+            .when("/register", {
+               templateUrl: "ng/templates/auth/register.html",
             })
 
             .when("/device-manager", {

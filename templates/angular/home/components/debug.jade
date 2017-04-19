@@ -1,10 +1,21 @@
 .panel.panel-danger
   .panel-heading
-    h4 Debug Panel
+    h4 Device Information for {{ device.name }}
       a.text-danger.fa.fa-close.pull-right(ng-click="data.show_panel.debug = !data.show_panel.debug")
       a.text-danger.fa.fa-cog.pull-right(ng-href="#!/device-manager")
   .debug-panel
     .panel-body(ng-show="data.show_panel.debug")
       .row
-        .carousel-frame(style="width:800px; height: 400px")
-          //carousel(links="data.links")
+        table.table.table-bordered
+          thead.thead-inverse
+            tr
+              th.device-info-id.hidden-xs ID
+              th.device-info-name Name
+              th.device-info-location Location
+              th.device-info-description Description
+          tbody
+            tr
+              td.device-info-id.hidden-xs {{ device.id }}
+              td.device-info-name {{ device.name }}
+              td.device-info-location {{ device.location }}
+              td.device-info-description {{ device.description }}

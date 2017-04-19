@@ -1,5 +1,4 @@
 from django.contrib.auth.models import User
-from django.shortcuts import reverse
 
 from rest_framework import serializers
 from api.v1.models import (
@@ -39,24 +38,29 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         view_name='user_detail',
         lookup_field='username',
     )
-    lifts = serializers.SerializerMethodField('_get_lifts')
+    devices = serializers.SerializerMethodField('_get_devices')
 
     class Meta:
         model = User
         fields = ('url', 'email', 'username', 'lifts', 'password', 'last_login', 'date_joined')
         extra_kwargs = {'password': {'write_only': True}}
+        read_only_fields = ('id',)
 
-    def _get_lifts(self, obj):
-        lifts = Device.objects.filter(user=obj.user)
-        return [{'id': x.id, 'name': x.name} for x in lifts]
+    def _get_devices(self, obj):
+        devices = Device.objects.filter(user=obj.user)
+        return [{'id': x.id, 'name': x.name} for x in devices]
 
     def create(self, validated_data):
-        user = User(
+        user = User.objects.create(
+            username=validated_data['username'],
             email=validated_data['email'],
-            username=validated_data['username']
+            first_name=validated_data['first_name'],
+            last_name=validated_data['last_name']
         )
+
         user.set_password(validated_data['password'])
         user.save()
+
         return user
 
 
@@ -73,8 +77,8 @@ class AnalogInputSerializer(serializers.ModelSerializer):
 
 
 class AnalogOutputSerializer(serializers.ModelSerializer):
-    OUT1 = serializers.IntegerField(required=True)
-    OUT2 = serializers.IntegerField(required=True)
+    AOUT1 = serializers.IntegerField(required=True)
+    AOUT2 = serializers.IntegerField(required=True)
 
     class Meta:
         model = AnalogOutput
@@ -88,8 +92,8 @@ class DigitalInputSerializer(serializers.ModelSerializer):
 
 
 class DigitalOutputSerializer(serializers.ModelSerializer):
-    OUT1 = serializers.BooleanField(required=True)
-    OUT2 = serializers.BooleanField(required=True)
+    DOUT1 = serializers.BooleanField(required=True)
+    DOUT2 = serializers.BooleanField(required=True)
 
     class Meta:
         model = DigitalOutput
@@ -109,10 +113,26 @@ class DeviceSerializer(serializers.HyperlinkedModelSerializer):
         lookup_field='pk'
     )
     id = serializers.ReadOnlyField()
+    digitaloutput = DigitalOutputSerializer()
+    digitalinput = DigitalInputSerializer()
+    analogoutput = AnalogOutputSerializer()
+    analoginput = AnalogInputSerializer()
+    relay = RelaySerializer()
 
     class Meta:
         model = Device
-        fields = ('url', 'id', 'name', 'location', 'address', 'created_at', 'slug')
+        fields = ('url',
+                  'id',
+                  'name',
+                  'location',
+                  'address',
+                  'created_at',
+                  'slug',
+                  'analogoutput',
+                  'analoginput',
+                  'digitaloutput',
+                  'digitalinput',
+                  'relay',)
 
 
 class ErrorSerializer(serializers.ModelSerializer):

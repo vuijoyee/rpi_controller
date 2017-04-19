@@ -14,11 +14,7 @@
          console.log('hello world');
          $location.path('device-control/' + id);
       };
-
-      vm.createDeviceRoute = function () {
-         $location.path('/device/new');
-      };
-
+      
       var getDevices = function () {
          return manager.get()
             .then(function (res) {

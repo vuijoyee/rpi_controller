@@ -1,25 +1,45 @@
 .panel.panel-warning
   .panel-heading
-    h4 Digital Output Group
+    h4 Digital Output Group - {{ device.name }}
       a.fa.fa-close.pull-right(ng-click="data.show_panel.digital_output = !data.show_panel.digital_output;")
       a.fa.fa-cog.pull-right(ng-click="data.show_settings.digital_output = !data.show_settings.digital_output;")
       a.fa.fa-info.pull-right
 
   .panel-body(id="digital-output-group" ng-show="data.show_panel.digital_output")
-    h4 OUT1
-    .slideThree(ng-click="data.digital_output.DOUT1 = !data.digital_output.DOUT1")
-      input(type="checkbox",
-      id="randomInputs",
-      ng-checked="data.digital_output.DOUT1",
-      value="None"
-      name="check")
-      label(for="slideThree")
-    h4 OUT2
-    .slideThree(ng-click="data.digital_output.DOUT2 = !data.digital_output.DOUT2")
-      input(type="checkbox",
-      id="randomInputs",
-      ng-checked="data.digital_output.DOUT2",
-      value="None"
-      name="check")
-      label(for="slideThree")
+    .row
+      .col-md-6.col-lg-6.col-sm-6
+        h4 OUT1
+        .slideThree(ng-click="data.digital_output.DOUT1 = !data.digital_output.DOUT1")
+          input(type="checkbox",
+          id="randomInputs",
+          ng-checked="data.digital_output.DOUT1",
+          value="None"
+          name="check")
+          label(for="slideThree")
+        h4 OUT2
+        .slideThree(ng-click="data.digital_output.DOUT2 = !data.digital_output.DOUT2")
+          input(type="checkbox",
+          id="randomInputs",
+          ng-checked="data.digital_output.DOUT2",
+          value="None"
+          name="check")
+          label(for="slideThree")
+
+      .col-md-6.col-lg-6.col-sm-6
+        h4 OUT3
+        .slideThree(ng-click="data.digital_output.DOUT3 = !data.digital_output.DOUT3")
+          input(type="checkbox",
+          id="randomInputs",
+          ng-checked="data.digital_output.DOUT3",
+          value="None"
+          name="check")
+          label(for="slideThree")
+        h4 OUT4
+        .slideThree(ng-click="data.digital_output.DOUT4 = !data.digital_output.DOUT4")
+          input(type="checkbox",
+          id="randomInputs",
+          ng-checked="data.digital_output.DOUT4",
+          value="None"
+          name="check")
+          label(for="slideThree")
 

@@ -2,7 +2,8 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
 
 .slider-handle {
-    background-color: #00D291;
+    color: #01D291 !important;
+    background-color: #01D291 !important;
 }
 
 .slideThree {
@@ -175,7 +176,6 @@ body ::-moz-placeholder {
 body :-ms-input-placeholder {
     /* Internet Explorer 10+ */
     font-family: 'Source Sans Pro', sans-serif;
-    color: white;
     font-weight: 300;
 }
 
@@ -238,7 +238,7 @@ input[type=password]::-moz-placeholder {
 }
 
 .relay-control .slideThree label {
-    background-color: #337AB6 !important;
+    background-color: #183747 !important;
 }
 
 #digital-output-group .slideThree label {
@@ -250,5 +250,10 @@ input[type=password]::-moz-placeholder {
 }
 
 #analog-output-group .slideThree label {
-    background-color: #00D291 !important;
+    background-color: #01D291 !important;
+}
+
+.thead-inverse{
+    color: white;
+    background-color: #C41C39;
 }

@@ -128,6 +128,22 @@ class UserDetail(APIView):
         serializer = UserSerializer(user, context={'request': request})
         return Response(serializer.data)
 
+    def post(request):
+        VALID_USER_FIELDS = [f.name for f in get_user_model()._meta.fields]
+        DEFAULTS = {
+            # you can define any defaults that you would like for the user, here
+        }
+        serialized = UserSerializer(data=request.data)
+        if serialized.is_valid():
+            user_data = {field: data for (field, data) in request.data.items() if field in VALID_USER_FIELDS}
+            user_data.update(DEFAULTS)
+            user = User.objects.create_user(
+                **user_data
+            )
+            return Response(UserSerializer(instance=user).data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serialized._errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 # -------------------------------------  Device Model View ------------------------------- #
 class DeviceList(APIView):
@@ -166,7 +182,11 @@ class DeviceDetail(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, pk, format=None):
-        pass
+        serializer = DeviceSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 # --------------------------------------------------------------------------------------- #
@@ -202,6 +222,9 @@ class RelayDetail(APIView):
         device = get_object_or_404(Device, pk=pk)
         relay = device.relay
         serializer = RelaySerializer(relay, data=request.data)
+        if request.data:
+            if not "device" in request.data:
+                request.data["device"] = device.pk
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
@@ -290,7 +313,7 @@ class DigitalOutputDetail(APIView):
         serializer = DigitalOutputSerializer(digital_output, data=request.data)
         if request.data:
             if not "device" in request.data:
-                request.data["device"] = lift.pk
+                request.data["device"] = device.pk
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)

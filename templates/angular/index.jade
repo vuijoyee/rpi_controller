@@ -3,6 +3,7 @@
 doctype html
 html(lang='en')
   head
+    link(rel="icon" href="{% static 'img/favico.ico' %}" type="image/x-icon")
     base(href='/')
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
@@ -10,15 +11,17 @@ html(lang='en')
     title RPi Controller v0.1
     // Library
     link(rel='stylesheet', href!='{% static "lib/bootstrap/dist/css/bootstrap.min.css" %}')
-    link(rel='stylesheet', href!='{% static "lib/bootstrap-slider/dist/css/bootstrap-slider.min.css" %}')
+    link(rel='stylesheet', href!='{% static "lib/bootstrap-slider/dist/css/bootstrap-slider.css" %}')
     link(rel='stylesheet', href!='{% static "lib/bootstrap-toggle/css/bootstrap-toggle.min.css" %}')
     link(rel='stylesheet', href!='{% static "lib/font-awesome/css/font-awesome.min.css" %}')
     link(rel='stylesheet', href!='{% static "lib/animate.css/animate.css" %}')
     link(rel="stylesheet", href!='{% static "lib/please-wait/build/please-wait.css" %}')
+    link(rel='stylesheet', href!='{% static "lib/pnotify/pnotify.custom.min.css" %}')
 
     // User Defined
     link(rel='stylesheet', href!='{% static "css/bootstrap-theme.css" %}')
     link(rel='stylesheet', href!='{% static "css/home/home.css" %}')
+
 
   body
     .container(ng-app='RPi')
@@ -36,6 +39,7 @@ html(lang='en')
   script(src!='{% static "lib/jquery/dist/jquery.min.js" %}')
   script(src!='{% static "lib/bootstrap/dist/js/bootstrap.min.js" %}')
   script(src!='{% static "lib/bootstrap-slider/dist/bootstrap-slider.js" %}')
+  script(src!='{% static "lib/pnotify/pnotify.custom.min.js" %}')
 
   // Angular Source
   script(src!='{% static "lib/angular/angular.js" %}')

@@ -1,6 +1,6 @@
 .panel.panel-success(id="analog-output-group")
    .panel-heading()
-      h4 Analog Output Group
+      h4 Analog Output Group - {{ device.name }}
          a.fa.fa-close.pull-right(ng-click="data.show_panel.analog_output = !data.show_panel.analog_output;")
          a.fa.fa-cog.pull-right(ng-click="data.show_settings.analog_output = !data.show_settings.analog_output;")
    .analog-output(ng-show="data.show_panel.analog_output")
@@ -11,11 +11,11 @@
             input(type="text",
                   id="analog-output-1",
                   class="slider-span",
-                  data-slider-bind="data.analog_output.OUT1",
+                  data-slider-bind="data.analog_output.AOUT1",
                   value="",
                   data-slider-min="0",
                   data-slider-max="100",
-                  data-slider-value="{{ slider }}",
+                  data-slider-value="{{ data.analog_output.AOUT1 }}",
                   data-slider-selection="after",
                   data-slider-tooltip="hide")
 
@@ -24,9 +24,9 @@
             // Two way binding
             input(type="text",
                   id="analog-output-2",
-                  data-slider-bind="data.analog_output.OUT2",
+                  data-slider-bind="data.analog_output.AOUT2",
                   class="slider-span",
-                  value="",
+                  value="{{ data.analog_output.AOUT1 }}",
                   data-slider-min="0",
                   data-slider-max="100",
                   data-slider-selection="after",

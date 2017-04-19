@@ -4,9 +4,9 @@
                         $rootScope,
                         $routeParams,
                         $location,
-                        $interval,
                         auth,
                         PinService,
+                        DeviceInformationService,
                         DigitalInputService,
                         DigitalOutputService,
                         AnalogOutputService,
@@ -19,17 +19,14 @@
 
       var device = {
          id: $routeParams.id
-      }
+      };
+
 
       function handleRequest(res) {
          console.log(res.data);
          return res.data;
       }
 
-
-      $rootScope.showNavigation = true;
-      $scope.slider = 46;
-      $scope.slider2 = 182;
       $scope.data = {
          global_settings: {
             device: null,
@@ -48,57 +45,80 @@
             digital_input: false,
             analog_input: false,
             analog_output: false,
-            debug: false
+            debug: true
          },
          checked: false,
-         relays: {
-            device: device.id,
-            A0: true,
-            A1: false,
-            A2: false,
-            A3: false,
-            A4: true,
-            A5: false,
-            A6: false,
-            A7: false
-         },
-
+         relays: device.relay,
          digital_input: {
-            DIN1: false,
-            DIN2: false
+            DIN1: null,
+            DIN2: null
          },
          digital_output: {
-            DOUT1: false,
-            DOUT2: false
-
+            DOUT1: null,
+            DOUT2: null
          },
-
          analog_input: {
-            random: false,
-            checked: true,
-            IN1: 1.8,
-            IN2: 37
+            AIN1: null,
+            AIN2: null
          },
          analog_output: {
-            OUT1: 0,
-            OUT2: 0
+            AOUT1: null,
+            AOUT2: null
          }
       };
 
 
-      $scope.$watch('data.analog_output.OUT1', function (val) {
+      DeviceInformationService.get(device.id).then(function (res) {
+         device.data = res.data;
+         device.relay = device.data.relay;
+         $scope.device = device.data;
+
+         $scope.data.digital_input.DIN1 = device.data.digitalinput.DIN1;
+         $scope.data.digital_input.DIN2 = device.data.digitalinput.DIN2;
+
+         $scope.data.digital_output.DOUT1 = device.data.digitaloutput.DOUT1;
+         $scope.data.digital_output.DOUT2 = device.data.digitaloutput.DOUT2;
+         $scope.data.digital_output.DOUT3 = device.data.digitaloutput.DOUT3;
+         $scope.data.digital_output.DOUT4 = device.data.digitaloutput.DOUT4;
+
+         $scope.data.analog_input.AIN1 = device.data.analoginput.AIN1;
+         $scope.data.analog_input.AIN2 = device.data.analoginput.AIN2;
+
+         $scope.data.analog_output.AOUT1 = device.data.analogoutput.AOUT1;
+         $scope.data.analog_output.AOUT2 = device.data.analogoutput.AOUT1;
+      });
+
+      $scope.$watch('data.analog_output.AOUT1', function (val) {
          $scope.data.analog_output.AOUT1 = val;
-         console.log($scope.data.analog_output);
          AnalogOutputService.put(device.id, $scope.data.analog_output)
             .then(handleRequest);
 
       });
 
-      $scope.$watch('data.analog_output.OUT2', function (val) {
-         //console.log('AOUT2' + val);
+      $scope.$watch('data.analog_output.AOUT2', function (val) {
          $scope.data.analog_output.AOUT2 = val;
-         console.log($scope.data.analog_output);
-         AnalogOutputService.put(device.id, $scope.data.analog_output);
+         AnalogOutputService.put(device.id, $scope.data.analog_output)
+            .then(handleRequest);
+      });
+
+
+      $scope.$watch('data.digital_output.DOUT1', function (val) {
+         $scope.data.digital_output.DOUT1 = val;
+         new PNotify({
+            title: 'Digital Output Section Updated!',
+            text: 'That thing that you were trying to do worked!',
+            type: 'success',
+            delay: 500
+         });
+         DigitalOutputService.put(device.id, $scope.data.digital_output)
+            .then(handleRequest);
+
+      });
+
+      $scope.$watch('data.digital_output.DOUT2', function (val) {
+         $scope.data.digital_output.DOUT2 = val;
+         DigitalOutputService.put(device.id, $scope.data.digital_output)
+            .then(handleRequest);
       });
 
 
@@ -107,8 +127,6 @@
          console.log($scope.data.relays);
 
       };
-
-      AnalogOutputService.put(device.id, $scope.data.analog_output);
    }
 
    angular.module('RPi.home')

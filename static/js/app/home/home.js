@@ -1,5 +1,5 @@
 ;(function () {
-   function homeInterceptor(API, auth, $location) {
+   function authInterceptor(API, auth, $location) {
       return {
          // automatically attach Authorization header
          request: function (config) {
@@ -26,10 +26,10 @@
    }
 
    angular.module('RPi.home', [])
-      .factory('homeInterceptor', homeInterceptor)
+      .factory('authInterceptor', authInterceptor)
       .config(function ($httpProvider) {
          $httpProvider.defaults.ContentType = 'application/json';
          $httpProvider.defaults.AccessControlAllowOrigin = '*';
-         $httpProvider.interceptors.push('homeInterceptor');
+         $httpProvider.interceptors.push('authInterceptor');
       })
 })();
